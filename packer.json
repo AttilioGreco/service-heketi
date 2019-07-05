@@ -1,0 +1,42 @@
+{
+  "builders": [
+    {
+      "type": "openstack",
+      "identity_endpoint": "https://api.entercloudsuite.com/v2.0",
+      "tenant_name": "{{user `tenant`}}",
+      "username": "{{user `username`}}",
+      "password": "{{user `password`}}",
+      "region": "{{user `region`}}",
+      "image_name": "{{user `image_name`}}",
+      "instance_name": "{{user `instance_name`}}",
+      "source_image": "{{user `source_image`}}",
+      "ssh_username": "ubuntu",
+      "flavor": "{{user `flavor`}}",
+      "networks": [ "{{user `network`}}" ],
+      "floating_ip_pool": "PublicNetwork"
+    }
+  ],
+  "provisioners": [
+    {
+      "destination": "/tmp/service-kubernetes",
+      "source": "{{ pwd }}",
+      "type": "file"
+    },
+    {
+      "type": "shell",
+      "inline_shebang": "/bin/bash -e",
+      "script": "cicd/image.sh"
+    }
+  ],
+  "variables": {
+    "source_image": "9cd1ffb4-6713-474c-b4dc-e2380032b855",
+    "image_name": "{{env `IMAGE_NAME`}}",
+    "instance_name": "kubernetes",
+    "flavor":  "e3standard.x4",
+    "region":  "{{env `OS_REGION_NAME`}}",
+    "tenant":  "{{env `OS_TENANT`}}",
+    "username":  "{{env `OS_USERNAME`}}",
+    "password":  "{{env `OS_PASSWORD`}}",
+    "network":  "{{env `OS_NETWORK`}}"
+  }
+}

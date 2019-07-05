@@ -1,37 +1,13 @@
 Automium Service: kubernetes 
 ======================================
 
-[![Build Status](https://travis-ci.org/automium/service-kubernetes.svg?branch=master)](https://travis-ci.org/automium/service-kubernetes)
+[![Build Status](https://travis-ci.org/automium/service-kubernetes.svg?branch=master)](https://travis-ci.org/automium/service-heketi)
 
 this project is meant to be used by [automium provisioner](https://github.com/automium/provisioner)
 
 ## variables
 
-### MASTER
-
-if true configure the instance as a kubernetes master node
-
-### NODE
-
-if true configure the instance as a kubernetes worker node
-
-### ETCD
-
-if true configure the instance as a etcd node
-
-### RANCHER_URL _optional_
-
-rancher http url
-
-### RANCHER_CLUSTER_TOKEN _optional_
-
-rancher token
-
-### AUTOMIUM_AUTOSCALER_KUBECONFIG _optional_
-
-base64 automium kubeconfig
-
-## usage
+### Gluster
 
 setup service var:
 ```
